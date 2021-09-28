@@ -1,0 +1,51 @@
+
+Regras do projeto
+
+Criação de Interfaces e Classes
+Lojas*
+Fast Foods*
+Self Service*
+Passageiros*
+Clientes*
+Aeronaves
+Passagens
+Realizar processo de compra/venda de pedido em lojas*
+Realizar processo de compra/venda de alimentos self service*
+Realizar processo de preparar pedido Fast Food
+Realizar processo de compra/venda de Fast Food*
+Realizar processo de compra/venda de passagem*
+Realizar processo de cadastro de Cliente*
+Realizar processo de cadastro de passageiro*
+Realizar processo de registro de bagagem*
+
+OBSERVAÇÕES
+
+O que tiver * é obrigatório
+Deverá ser entregue até sexta-feira 01/10/2021
+Após esse prazo, haverá perda sobre o processo de avaliação
+Realizar utilizandos apenas TERMINAL e VSCODE
+O projeto deverá ser feito pela equipe toda, ou seja, todos devem ter um commit
+O projeto deverá estar publicado no GITHUB em visibilidade Pública
+Pode ser utilizado o exemplo de aula e realizar baseado no mesmo
+Tente deixar o código comentado
+Tente deixar o código organizado
+Não é necessário criação de pastas
+Não esqueca do GITIGNORE
+
+
+1 interface pra lojas
+1 interface pra fastfood e self service
+1 interface para  Clientes
+1 interface para passageiros 
+Passagens
+
+
+Cliente ->      carteira 
+                comprar
+            
+Cadastrar ->    lojas 
+                passagens 
+                aeronaves 
+                produtos
+
+Cliente compra/vende os itens cadastrados

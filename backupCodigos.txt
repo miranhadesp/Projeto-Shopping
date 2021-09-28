@@ -1,0 +1,88 @@
+-> PRIMEIRA TENTATIVA DE MENU
+public static void Inicio(){
+            Console.WriteLine("1 - Alimentação");
+            Console.WriteLine("2 - Lojas");
+            Console.WriteLine("3 - Passagens");
+            Console.WriteLine("0 - Sair do programa");
+
+            int opcao = Convert.ToInt32(Convert.ReadLine());  
+
+            switch (opcao){
+                case 1:
+                    Alimentacao();
+                    break;
+
+                case 2: 
+                    Loja();
+                    break;
+
+                case 3:
+                    Aeroporto();
+                    break;
+
+                case 0:
+                    Enviroment.Exit(0);
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida, tente novamente.");
+                    Inicio();
+                    break;
+            }  
+        }
+
+        public static void Loja(){
+            Dictionary <int, string> lojas = new Dictionary <int, string>();
+            Console.WriteLine("1 - Cadastrar Loja");
+            Console.WriteLine("2 - Remover loja");
+            Console.WriteLine("3 - Iniciar compra");
+            Console.WriteLine("4 - Exibir lojas");
+            Console.WriteLine("0 - Voltar ao menu inicial");
+            
+            int opcao = Convert.ToInt32(Convert.ReadLine());
+            Loja loja =  new Loja();
+            loja.ControleLoja(opcao);
+        }
+
+        public static void Alimentacao(){
+            Console.WriteLine("1 - Cadastrar FastFood");
+            Console.WriteLine("2 - Remover FastFood");
+            Console.WriteLine("3 - Cadastrar Self Service");
+            Console.WriteLine("4 - Remover Self Service");
+            Console.WriteLine("5 - Acessar lojas cadastradas");
+            Console.WriteLine("0 - Voltar ao menu inicial");
+
+            int opcao = Convert.ToInt32(Convert.ReadLine());
+
+            switch (opcao){
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+
+                default:
+                    break;
+            }
+        }  
+
+        public static void Aeroporto(){
+            Console.WriteLine("1 - Cadastrar passagem");
+            Console.WriteLine("2 - Cadastrar aeronave");
+            Console.WriteLine("3 - Comprar passagem");
+            Console.WriteLine("4 - Vender passagem");
+            Console.WriteLine("0 - Voltar ao menu inicial");
+
+            int opcao = Convert.ToInt32(Convert.ReadLine());
+
+            switch (opcao){
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+
+                default:
+                    break;
+            }
+        }        
+
+
