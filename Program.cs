@@ -6,24 +6,9 @@ namespace projeto1{
 
         static void Main(string[] args){
 
-            Console.WriteLine("Bem vindo ao sistema do Shopping mais badalado do Brasil");
-            
-            Menu.Inicio();
-
-             // Vitor
-
-            
-           /* public void  RemoverItem(Dictionary <int, string> restaurante){
-            Sistema sistema = new Sistema();
-            int ip;
-            Console.Write("Digite o IP do restaurante: ");
-            Int32.TryParse(Console.ReadLine(), out ip);
-            foreach(KeyValuePair <int, string> v in restaurante){
-                if(ip == v.Key){
-                    restaurante.Remove(ip);
-                }
-            }
-            sistema.MontarSistema(restaurante);*/
-        }
+            Dictionary <int, string> fastfood = new Dictionary <int, string>();
+            Dictionary <int, string> selfservice = new Dictionary <int, string>();  
+            Inicio inicio = new Inicio();
+            inicio.Select(fastfood, selfservice);
     }
 }
