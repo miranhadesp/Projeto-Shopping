@@ -17,8 +17,6 @@ namespace Testess
             Console.Write("Nome do restaurante: ");
             valorRes = Console.ReadLine();
             fastfood.Add(chaveRes, valorRes);
-            var loja = new Lojas();
-            loja.Teste();
             fast.Menu1(fastfood, selfservice);
         }
         public void  RemoverItem(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice){
