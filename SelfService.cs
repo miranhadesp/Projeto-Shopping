@@ -14,39 +14,37 @@ namespace projeto1{
         double Preco {get; set;}
         
         public void CadastrarSelfService(){
-            int n;
-            int id;
-            string valorRes;
+           public void Menu2(Dictionary <int, string> selfservice, Dictionary <int, string> fastfood){
+            Lista2 lista2 = new Lista2();
+            int opcao;
+            Console.WriteLine("Escolha uma opção");
+            Console.WriteLine("1 - Criar lista");
+            Console.WriteLine("2 - exibir lista");
+            Console.WriteLine("3 - remover restaurante");
+            Console.WriteLine("4 - sair do sistema");
 
-            Console.Write("Número de SelfServices cadastradas: ");
-            Int32.TryParse(Console.ReadLine(), out n);
 
-            for(int i = 0; i<n; i++){
-                Console.Write("ID do SelfService: ");
-                Int32.TryParse(Console.ReadLine(), out id);
+            Console.Write("Opção: ");
+            Int32.TryParse(Console.ReadLine(), out opcao);
 
-                Console.Write("Nome do SelfService: ");
-                valorRes = Console.ReadLine();
-                
-                loja.Add(chaveRes, id);
+            switch(opcao){
+                case 1:
+                    lista2.MontarLista(selfservice, fastfood);
+                    break;
+                case 2:
+                    lista2.ExibeLista(selfservice, fastfood);
+                    break;
+                case 3:
+                    lista2.RemoverItem(selfservice, fastfood);
+                    break;
+                case 4:
+                    Inicio inicio = new Inicio();
+                    inicio.Select(fastfood, selfservice);
+                    break;
+
             }
 
-            Menu.Inicio();
         }
-
-        public void RemoverSelfService(Dictionary <int, string> selfservice){
-            Menu menu = new Menu();
-            int id;
-            Console.Write("Digite o IP do selfservice: ");
-            Int32.TryParse(Console.ReadLine(), out id);
-            foreach(KeyValuePair <int, string> v in selfservice){
-                if(id == v.Key){
-                    selfservice.Remove(id);
-                }
-            }
-            Menu.Inicio(selfservice);
-        }
-        
          // Verificar quais os itens tem no carrinho
         void Carrinho(){
             Console.WriteLine($"O(s) item(ns) 'x','y','z' estão no carrinho")
