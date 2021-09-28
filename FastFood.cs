@@ -16,44 +16,39 @@ namespace projeto1{
         // 1 MENU CAD LOJA
 
         public void CadastrarFastFood(){
-            int n;
-            int id;
-            string nomeFastFood;
+           public void Menu1(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice ){
+
+            Lista1 lista1 = new Lista1();
+            int opcao;
+            Console.WriteLine("Escolha uma opção");
+            Console.WriteLine("1 - Adcionar fastfood");
+            Console.WriteLine("2 - exibir fastfoods");
+            Console.WriteLine("3 - remover restaurante");
+            Console.WriteLine("4 - voltar ao menu");
 
 
-            Console.Write("Número de FastFoods cadastradas: ");
-            Int32.TryParse(Console.ReadLine(), out nomeFastFood);
+            Console.Write("Opção: ");
+            Int32.TryParse(Console.ReadLine(), out opcao);
 
+            switch(opcao){
+                case 1:
+                    lista1.MontarLista(fastfood, selfservice);
+                    break;
+                case 2:
+                    lista1.ExibeLista(fastfood, selfservice);
+                    break;
+                case 3:
+                    lista1.RemoverItem(fastfood, selfservice);
+                    break;
+                case 4:
+                    Inicio inicio = new Inicio();
+                    inicio.Select(fastfood, selfservice);
+                    break;
 
-            for(int i = 0; i<n; i++){
-                Console.Write("ID do FastFood: ");
-                Int32.TryParse(Console.ReadLine(), out id);
-
-                this.Id = id;
-
-                Console.Write("Nome do FastFood: ");
-                nomeFastFood = Console.ReadLine();
-                
-                this.NomeFastFood = nomeFastFood;
-
-                loja.Add(nomeFastFood, id);
             }
-            Menu.Inicio();//(lojas);
-        }
+         }
 
-        public void RemoverFastFood(Dictionary <int, string> fastfood){
-            Menu menu = new Menu();
-            int id;
-            Console.Write("Digite o IP do fastfood: ");
-            Int32.TryParse(Console.ReadLine(), out id);
-            
-            foreach(KeyValuePair <int, string> v in fastfood){
-                if(id == v.Key){
-                    fastfood.Remove(id);
-                }
-            }
-            Menu.Inicio(fastfood);
-        }
+ 
 
         // 2 CADASTRA PROD
 
