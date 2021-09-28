@@ -1,57 +1,70 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace projeto1{
 
     public class Cliente : ICliente{
 
+        List<ICliente> cliente = new List<ICliente>();
+
         private double carteira;
-
         public double Carteira {
-
             get {return carteira;}
             set {carteira = value;}
-
         }
 
         private string nome;
         public string Nome{
-
             get{ return nome; }
             set{ nome = value; }
         }
-
+        
         private int cpf;
         public int Cpf{
-
             get{ return cpf; }
             set{ cpf = value; }
         }
 
-        public ICliente CadastrarCliente(){ // -> Victor Augusto
+        public Cliente(){
 
-            Dictionary<int, string> cliente = new Dictionary<int, string>();
-
-            Console.WriteLine("Digite seu nome para cadastro: ");
-            string _nome = Console.ReadLine();
-
-            Console.WriteLine("Digite seu cpf: ");
-            int _cpf = Convert.ToInt32(Console.ReadLine());
         }
 
+        private Cliente(int cpf, string nome, double carteira){
 
-        public double SaldoCarteira(){ // -> Vitor Gabriel
+            Cpf = cpf;
+            Nome = nome;
+            Carteira = carteira;
+        }
+
+        public double CadastrarCliente(){ // -> Victor Augusto
 
             double carteira = 0;
 
-            Console.WriteLine("Qual o valor existente na carteira? ");
+            Console.Write("\nDigite seu nome para cadastro: ");
+            Nome = Console.ReadLine();
 
+            Console.Write("Digite seu cpf: ");
+            Cpf = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Qual o valor existente na carteira? ");
             double.TryParse(Console.ReadLine(), out carteira);
-            
-            this.Carteira = carteira; 
+            Carteira = carteira;
+
+            cliente.Add(new Cliente(Cpf, Nome, Carteira));
+
+            foreach (ICliente e in cliente){
+                
+                Console.WriteLine($"\nCpf: {e.Cpf}");
+                Console.WriteLine($"Nome: {e.Nome}");
+                Console.WriteLine($"Disponível na carteira: {e.Carteira}R$");
+            }
 
             return Carteira;
         }
-
+        
     }   
 }

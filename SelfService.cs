@@ -1,56 +1,77 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace projeto1{
  
     public class SelfService : IAlimentacao{ // -> Rodrigo e Diogo
         
-        int Id {get;}
-        
-        string Nome{ get; set;}
+        private int id;
+        public int Id {
+            get { return id; } 
+            set { id = value; }
+        }
 
-        string Produto {get; set;}
+        private string nome;
+        public string Nome{ 
+            get{ return nome; } 
+            set{ nome = value; }
+            }
 
-        double Preco {get; set;}
+        private string produto;
+        public string Produto{
+            get{ return produto; } 
+            set{ produto = value; }
+        }
+
+        private double preco;
+        public double Preco{
+            get{ return preco; } 
+            set{ preco = value; }
+        }
         
-        public void CadastrarSelfService(){
-           public void Menu2(Dictionary <int, string> selfservice, Dictionary <int, string> fastfood){
-            Lista2 lista2 = new Lista2();
+        public void MenuSelfService(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice, Dictionary <int, string> lojas){
+
+            ListaSelf listaSelf = new ListaSelf();
             int opcao;
-            Console.WriteLine("Escolha uma opção");
-            Console.WriteLine("1 - Criar lista");
-            Console.WriteLine("2 - exibir lista");
-            Console.WriteLine("3 - remover restaurante");
-            Console.WriteLine("4 - sair do sistema");
-
+            Console.WriteLine("\nEscolha uma opção");
+            Console.WriteLine("1 - Criar loja");
+            Console.WriteLine("2 - Exibir lojas");
+            Console.WriteLine("3 - Remover lojas");
+            Console.WriteLine("4 - Voltar ao menu");
 
             Console.Write("Opção: ");
             Int32.TryParse(Console.ReadLine(), out opcao);
 
             switch(opcao){
                 case 1:
-                    lista2.MontarLista(selfservice, fastfood);
+                    listaSelf.MontarLista(fastfood, selfservice, lojas);
                     break;
                 case 2:
-                    lista2.ExibeLista(selfservice, fastfood);
+                    listaSelf.ExibeLista(fastfood, selfservice, lojas);
                     break;
                 case 3:
-                    lista2.RemoverItem(selfservice, fastfood);
+                    listaSelf.RemoverItem(fastfood, selfservice, lojas);
                     break;
                 case 4:
                     Inicio inicio = new Inicio();
-                    inicio.Select(fastfood, selfservice);
+                    inicio.Select(fastfood, selfservice, lojas);
                     break;
-
             }
 
         }
-         // Verificar quais os itens tem no carrinho
-        void Carrinho(){
-            Console.WriteLine($"O(s) item(ns) 'x','y','z' estão no carrinho")
+        // Verificar quais os itens tem no carrinho
+        public void Carrinho(){
+            Console.WriteLine($"O(s) item(ns) 'x','y','z' estão no carrinho");
         }
 
-        // Simular venda de mercadoria
-         void Vender(){
+            // Simular venda de mercadoria
+        public void Vender(){
             Console.WriteLine($"Venda do 'Produto' foi realizada com sucesso");
+        }
     }
+}
+

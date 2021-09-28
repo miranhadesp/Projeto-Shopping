@@ -2,8 +2,8 @@ using System;
 
 namespace projeto1{
 
-    interface IAlimentacao : ILoja{
+    interface IAlimentacao : IProduto{
 
-       void PrepararPedido();
+       //void PrepararPedido();
     }
 }

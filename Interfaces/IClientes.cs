@@ -6,9 +6,8 @@ namespace projeto1{
 
         double Carteira {get; set;}
 
-        string nome { get; set; }
+        string Nome { get; set; }
 
-        int cpf { get; set; }
-
+        int Cpf { get; set; }
     }
 }

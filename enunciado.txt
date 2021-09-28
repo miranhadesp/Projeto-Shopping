@@ -2,21 +2,21 @@
 Regras do projeto
 
 Criação de Interfaces e Classes
-Lojas*
-Fast Foods*
-Self Service*
-Passageiros*
-Clientes*
+Lojas* (X)
+Fast Foods* (X)
+Self Service* (X)
+Passageiros* (X)
+Clientes* (X)
 Aeronaves
 Passagens
-Realizar processo de compra/venda de pedido em lojas*
-Realizar processo de compra/venda de alimentos self service*
-Realizar processo de preparar pedido Fast Food
-Realizar processo de compra/venda de Fast Food*
-Realizar processo de compra/venda de passagem*
-Realizar processo de cadastro de Cliente*
-Realizar processo de cadastro de passageiro*
-Realizar processo de registro de bagagem*
+Realizar processo de compra/venda de pedido em lojas* ()
+Realizar processo de compra/venda de alimentos self service* (X)
+Realizar processo de preparar pedido Fast Food ()
+Realizar processo de compra/venda de Fast Food* (X)
+Realizar processo de compra/venda de passagem* (X)
+Realizar processo de cadastro de Cliente* (X)
+Realizar processo de cadastro de passageiro* (X)
+Realizar processo de registro de bagagem* (X)
 
 OBSERVAÇÕES
 

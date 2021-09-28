@@ -1,52 +1,56 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace projeto1{
 
     public class Loja : ILoja{
 
-       
+        private int id;
+        public int Id {
+            get { return id; } 
+            set { id = value; }
+        }
+
+        private string nome;
+        public string Nome{ 
+            get{ return nome; } 
+            set{ nome = value; }
+        }
+
         // 1 MENU CAD LOJA
 
-        public void CadastrarLoja(){
-            int n;
-            int id;
-            string valorRes;
+        public void MenuLoja(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice, Dictionary <int, string> lojas ){
 
-            Console.Write("Número de lojas cadastradas: ");
-            Int32.TryParse(Console.ReadLine(), out n);
+            ListaLoja listaLoja = new ListaLoja();
+            int opcao;
+            Console.WriteLine("\nEscolha uma opção");
+            Console.WriteLine("1 - Adicionar lojas");
+            Console.WriteLine("2 - Exibir lojas");
+            Console.WriteLine("3 - Remover lojas");
+            Console.WriteLine("4 - Voltar ao menu");
 
-            for(int i = 0; i<n; i++){
-                Console.Write("ID da loja: ");
-                Int32.TryParse(Console.ReadLine(), out id);
+            Console.Write("Opção: ");
+            Int32.TryParse(Console.ReadLine(), out opcao);
 
-                Console.Write("Nome da loja: ");
-                valorRes = Console.ReadLine();
-                
-                loja.Add(chaveRes, id);
+            switch(opcao){
+                case 1:
+                    listaLoja.MontarLista(fastfood, selfservice, lojas);
+                    break;
+                case 2:
+                    listaLoja.ExibeLista(fastfood, selfservice, lojas);
+                    break;
+                case 3:
+                    listaLoja.RemoverItem(fastfood, selfservice, lojas);
+                    break;
+                case 4:
+                    Inicio inicio = new Inicio();
+                    inicio.Select(fastfood, selfservice, lojas);
+                    break;
             }
-            sistema.//(lojas);
-        }
-
-        public void RemoverLoja(Dictionary <int, string> loja){
-            Menu menu = new Menu();
-            int id;
-            Console.Write("Digite o IP do loja: ");
-            Int32.TryParse(Console.ReadLine(), out id);
-            
-            foreach(KeyValuePair <int, string> v in loja){
-                if(id == v.Key){
-                    loja.Remove(id);
-                }
-            }
-            Menu.Inicio(loja);
-        }
-
-        // 2 CADASTRA PROD
-        
-
-        // 3 Simular compra
- 
         }
     }
 }
