@@ -2,7 +2,7 @@ using System;
 
 namespace projeto1
 {
-    public interface IAeronave : IPassagem
+    public interface IAeronave : IPassagem // -> puxando características de IPAssagem
     {
         int Id {get; set;}
 
