@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Testess
+{
+    public class Lista2
+    {
+        public void MontarLista(Dictionary <int, string> selfservice, Dictionary <int, string> fastfood){
+            SelfService self = new SelfService();
+            int n;
+            int chaveRes;
+            string valorRes;
+            Console.Write("Número de selfservices: ");
+            Int32.TryParse(Console.ReadLine(), out n);
+            for(int i = 0; i<n; i++){
+                Console.Write("IP do selfservice: ");
+                Int32.TryParse(Console.ReadLine(), out chaveRes);
+                Console.Write("Nome do selfservice: ");
+                valorRes = Console.ReadLine();
+                selfservice.Add(chaveRes, valorRes);
+            }
+           self.Menu2(selfservice, fastfood);
+        }
+        public void  RemoverItem(Dictionary <int, string> selfservice, Dictionary <int, string> fastfood){
+            SelfService self = new SelfService();
+            int ip;
+            Console.Write("Digite o IP do selfservice: ");
+            Int32.TryParse(Console.ReadLine(), out ip);
+            foreach(KeyValuePair <int, string> v in selfservice){
+                if(ip == v.Key){
+                    selfservice.Remove(ip);
+                }
+            }
+            self.Menu2(selfservice, fastfood);
+        }
+
+        public void ExibeLista(Dictionary <int, string> selfservice, Dictionary <int, string> fastfood){  
+            SelfService self = new SelfService();      
+            foreach(KeyValuePair <int, string> v in selfservice){
+                Console.WriteLine($"IP do selfservice: {v.Key}, nome do selfservice: {v.Value}");
+            }
+            self.Menu2(selfservice, fastfood);
+        }
+    }
+
+}
