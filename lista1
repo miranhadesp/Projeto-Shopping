@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace Testess
+{
+
+    public class Lista1
+    {
+        public void MontarLista(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice){
+            FastFood fast = new FastFood();
+            int chaveRes;
+            string valorRes;
+            Console.Write("IP do restaurante: ");
+            Int32.TryParse(Console.ReadLine(), out chaveRes);
+            Console.Write("Nome do restaurante: ");
+            valorRes = Console.ReadLine();
+            fastfood.Add(chaveRes, valorRes);
+            var loja = new Lojas();
+            loja.Teste();
+            fast.Menu1(fastfood, selfservice);
+        }
+        public void  RemoverItem(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice){
+            FastFood fast = new FastFood();
+            int ip;
+            Console.Write("Digite o IP do restaurante: ");
+            Int32.TryParse(Console.ReadLine(), out ip);
+            foreach(KeyValuePair <int, string> v in fastfood){
+                if(ip == v.Key){
+                    fastfood.Remove(ip);
+                }
+            }
+            fast.Menu1(fastfood, selfservice);
+        }
+        
+    
+
+        public void ExibeLista(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice){  
+            FastFood fast = new FastFood();       
+            foreach(KeyValuePair <int, string> v in fastfood){
+                Console.WriteLine($"IP do restaurante: {v.Key}, nome do restaurante: {v.Value}");
+            }
+            fast.Menu1(fastfood, selfservice);
+        }
+    }
+}
