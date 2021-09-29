@@ -16,6 +16,11 @@ namespace projeto1{
             Dictionary <int, string> lojas = new Dictionary <int, string>();   
             Inicio inicio = new Inicio();
             inicio.Select(fastfood, selfservice, lojas);
+            
+            //Instancia parao menu de cadastro
+            //List<IProduto> produtosLoja = new List<IProduto>(); // Cria uma lista de IProduto
+            //List<IProduto> produtosFast = new List<IProduto>();
+            //Menu menu = new Menu(produtosLoja, produtosFast, saldo);
         }
     }
 }
