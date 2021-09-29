@@ -42,10 +42,10 @@ namespace projeto1{
             int opcao;
 
             Console.WriteLine("\nEscolha uma opção");
-            Console.WriteLine("1 - Adcionar fastfood");
+            Console.WriteLine("1 - Adicionar fastfood"); //Alterei texto (erro de português) - Thais
             Console.WriteLine("2 - Exibir fastfoods");
             Console.WriteLine("3 - Remover restaurante");
-            Console.WriteLine("4 - Voltar ao menu");
+            Console.WriteLine("0 - Voltar ao menu");
 
 
             Console.Write("Opção: ");
@@ -64,7 +64,7 @@ namespace projeto1{
                     listaFast.RemoverItem(fastfood, selfservice, lojas);
                     break;
                     
-                case 4:
+                case 0:
                     Inicio inicio = new Inicio();
                     inicio.Select(fastfood, selfservice, lojas);
                     break;
@@ -90,5 +90,9 @@ namespace projeto1{
              Console.WriteLine("Separando pedido");
              Console.WriteLine("Aquecendo a gordura");
              Console.WriteLine("Adicionando mais caloria")*/
+
+
+             /* var preparo = "Seu Pedido está sendo preparado";
+                var fim = "Pedido finalizado, por favor retire no balcão";   */
     }
 }

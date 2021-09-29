@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace projeto1{
 
-    public class VendaPassagem : IAeronave
+    public class Passagem : IPassagem //IPassagem.VenderPassagem?(Thais) - Erro de implementação
     {
+
         private int id;
         public int Id{
             get{ return id; }
@@ -45,7 +46,7 @@ namespace projeto1{
 
 
         //Criando um construtor 
-        private VendaPassagem(
+        private Passagem(
             string nomeEmpresa,
             double precoPassagem,
             string destino
@@ -57,12 +58,11 @@ namespace projeto1{
         }
 
         //Construtor Vazio para poder instanciar na program
-        public VendaPassagem()
+        public Passagem()
         {
         }
 
 
-        //Metódo para cadastrar empresa.
         public void CadastrarEmpresa()
         {
 
@@ -96,17 +96,17 @@ namespace projeto1{
                 destino = Console.ReadLine();
 
                 //Adiciona na Lista Os valores abaixo.
-                passagens.Add(new VendaPassagem(NomeEmpresa,PrecoPassagem,Destino));
+                passagens.Add(new Passagem(NomeEmpresa,PrecoPassagem,Destino));
             }
-        }
 
+        }
         //Metódo para poder exibir as empresas.
         public void ExibirEmpresas()
         {
             //Percorremos na Interface IPassagem com a variavel e na lista passagens.
             foreach (IPassagem e in passagens)
             {
-                Console.WriteLine($"Empresas cadastradas: {e.NomeEmpresa}, Preço : R${e.PrecoPassagem}, Destino : {e.Destino}");
+                Console.WriteLine($"Empresas cadastradas: {e.NomeEmpresa}");
             }
         }
 
@@ -141,6 +141,15 @@ namespace projeto1{
         //Metódo para vender a passagem.
         public void VenderPassagem()
         {
+            
+            Console.WriteLine("Passagens Disponíveis: ");
+
+            foreach (IPassagem e in passagens)
+            {
+                Console.WriteLine($"{e.Id} -> {e.Destino} : {e.PrecoPassagem}");
+            }
+
+            
             //Criamos uma nova instancia de Cliente.
             Cliente saldoCliente = new Cliente();
 
@@ -172,6 +181,6 @@ namespace projeto1{
         //     string[] tipo = new string["Pobre", "Média", "Rica"];
 
         //     // Console.WriteLine("Digite ")            
-        // }
+     
     }
 }

@@ -49,3 +49,11 @@ Cadastrar ->    lojas
                 produtos
 
 Cliente compra/vende os itens cadastrados
+
+
+
+anotações para VItor:
+
+- adicionar id à lista usada em Passagem
+- 
+

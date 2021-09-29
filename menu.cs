@@ -8,15 +8,17 @@ namespace projeto1{
 
     class Inicio{
         public void Select(Dictionary <int, string> fastfood , Dictionary <int, string> selfservice,  Dictionary <int, string> lojas){
-            int n;
+            int opcao;
 
             Console.WriteLine("\nEscolha o segmento desejado");
             Console.WriteLine("1 - FastFood");
             Console.WriteLine("2 - Selfservice");
             Console.WriteLine("3 - Lojas");
-            Int32.TryParse(Console.ReadLine(), out n);
+            Console.WriteLine("4 - Aeroporto");
+            Console.WriteLine("0 - Sair do programa");
+            Int32.TryParse(Console.ReadLine(), out opcao);
 
-            switch(n){
+            switch(opcao){
                 case 1:
                     FastFood fast = new FastFood();
                     fast.MenuFastFood(fastfood, selfservice, lojas);
@@ -29,7 +31,17 @@ namespace projeto1{
                     Loja loja = new Loja();
                     loja.MenuLoja(fastfood, selfservice, lojas);
                     break;
-
+                case 4:
+                    Passagem passagem = new Passagem();
+                    passagem.CadastrarEmpresa();
+                    passagem.ExibirEmpresas();
+                    // passagem.RemoverEmpresa();
+                    passagem.VenderPassagem();
+                    break;
+                case 0:
+                    Console.WriteLine("Obrigado pela visita, volte sempre! :)");
+                    Environment.Exit(0);
+                    break;
             }
         }
     }

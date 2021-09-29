@@ -40,7 +40,7 @@ namespace projeto1{
             Carteira = carteira;
         }
 
-        public double CadastrarCliente(){ // -> Victor Augusto
+        public void CadastrarCliente(){ // -> Victor Augusto
 
             double carteira = 0;
 
@@ -58,13 +58,10 @@ namespace projeto1{
 
             foreach (ICliente e in cliente){
                 
-                Console.WriteLine($"\nCpf: {e.Cpf}");
+                Console.WriteLine($"\nCPF: {e.Cpf}");
                 Console.WriteLine($"Nome: {e.Nome}");
                 Console.WriteLine($"Disponível na carteira: {e.Carteira}R$");
             }
-
-            return Carteira;
         }
-        
     }   
 }

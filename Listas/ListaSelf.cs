@@ -8,7 +8,7 @@ namespace projeto1{
 
     public class ListaSelf{
 
-            public void MontarLista(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice, Dictionary <int, string> lojas){
+        public void MontarLista(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice, Dictionary <int, string> lojas){
 
             SelfService self = new SelfService();
 
@@ -18,10 +18,20 @@ namespace projeto1{
             Console.Write("ID do selfservice: ");
             Int32.TryParse(Console.ReadLine(), out chaveRes);
 
+            foreach (KeyValuePair<int, string> e in selfservice){
+                if(e.Key == chaveRes){
+                    Console.WriteLine("\nLoja já cadastrada!");
+                    MontarLista(fastfood, selfservice, lojas);
+                }
+            }
+
             Console.Write("Nome do selfservice: ");
             valorRes = Console.ReadLine();
 
             selfservice.Add(chaveRes, valorRes);
+
+            Console.WriteLine("\nCadastro realizado com sucesso!\n");
+
             self.MenuSelfService(fastfood, selfservice, lojas);
         }
 
@@ -37,6 +47,11 @@ namespace projeto1{
             foreach(KeyValuePair <int, string> v in selfservice){
                 if(id == v.Key){
                     selfservice.Remove(id);
+                    Console.WriteLine("\nRemoção realizada com sucesso!");
+                }
+                else{
+                    Console.WriteLine("ID não encontrado, tente novamente.");
+                    RemoverItem(fastfood, selfservice, lojas);
                 }
             }
 
@@ -46,6 +61,8 @@ namespace projeto1{
         public void ExibeLista(Dictionary <int, string> fastfood, Dictionary <int, string> selfservice, Dictionary <int, string> lojas){ 
 
             SelfService self = new SelfService();
+
+            Console.WriteLine("\n"); 
 
             foreach(KeyValuePair <int, string> v in selfservice){
                 Console.WriteLine($"ID do selfservice: {v.Key}, nome do selfservice: {v.Value}");

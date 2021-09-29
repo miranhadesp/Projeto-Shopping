@@ -7,12 +7,14 @@ namespace projeto1{
 
      public interface IPassagem{
 
+         int Id {get; set;}
+
          string NomeEmpresa {get;set;}
 
          double PrecoPassagem {get;set;}
 
          string Destino {get;set;}
 
-         void VenderPassagem();
+        //  public void VenderPassagem();
     }
 }

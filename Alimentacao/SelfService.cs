@@ -41,7 +41,7 @@ namespace projeto1{
             Console.WriteLine("1 - Criar loja");
             Console.WriteLine("2 - Exibir lojas");
             Console.WriteLine("3 - Remover lojas");
-            Console.WriteLine("4 - Voltar ao menu");
+            Console.WriteLine("0 - Voltar ao menu");
 
             Console.Write("Opção: ");
             Int32.TryParse(Console.ReadLine(), out opcao);
@@ -56,7 +56,7 @@ namespace projeto1{
                 case 3:
                     listaSelf.RemoverItem(fastfood, selfservice, lojas);
                     break;
-                case 4:
+                case 0:
                     Inicio inicio = new Inicio();
                     inicio.Select(fastfood, selfservice, lojas);
                     break;
