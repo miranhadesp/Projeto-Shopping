@@ -66,7 +66,8 @@ namespace projeto1{
                     
                 case 0:
                     Inicio inicio = new Inicio();
-                    inicio.Select(fastfood, selfservice, lojas);
+                    List<IPassagem> abc = new List<IPassagem>();
+                    inicio.Select(fastfood, selfservice, lojas, abc);
                     break;
             }
          }
@@ -75,13 +76,13 @@ namespace projeto1{
 
         // 2 CADASTRA PROD
         //Alteração feita por Thais
-        void Produto(){
+        void CadastrarProduto(){
             List<string>produto=new List<string>();
-            console.WriteLine("Cadastre o produto desejado: ");
+            Console.WriteLine("Cadastre o produto desejado: ");
             produto.Add("");
             produto.Add("");
             produto.Add("");
-            produto.Add(""));
+            produto.Add("");
             /*produto.Add("Big Mac");
                 produto.Add("Whopper");
                 foreach(string n in produto)

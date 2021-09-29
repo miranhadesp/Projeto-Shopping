@@ -13,9 +13,12 @@ namespace projeto1{
 
             Dictionary <int, string> fastfood = new Dictionary <int, string>();
             Dictionary <int, string> selfservice = new Dictionary <int, string>();  
-            Dictionary <int, string> lojas = new Dictionary <int, string>();   
+            Dictionary <int, string> lojas = new Dictionary <int, string>(); 
+
+            List<IPassagem> passagens = new List<IPassagem>();
+
             Inicio inicio = new Inicio();
-            inicio.Select(fastfood, selfservice, lojas);
+            inicio.Select(fastfood, selfservice, lojas, passagens);
             
             //Instancia parao menu de cadastro
             //List<IProduto> produtosLoja = new List<IProduto>(); // Cria uma lista de IProduto

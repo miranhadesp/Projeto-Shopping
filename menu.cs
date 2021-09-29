@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace projeto1{
 
     class Inicio{
-        public void Select(Dictionary <int, string> fastfood , Dictionary <int, string> selfservice,  Dictionary <int, string> lojas){
+        public void Select(Dictionary <int, string> fastfood , Dictionary <int, string> selfservice,  Dictionary <int, string> lojas, List<IPassagem> passagens){
             int opcao;
 
             Console.WriteLine("\nEscolha o segmento desejado");
@@ -33,11 +33,8 @@ namespace projeto1{
                     loja.MenuLoja(fastfood, selfservice, lojas);
                     break;
                 case 4:
-                    Passagem passagem = new Passagem();
-                    passagem.CadastrarEmpresa();
-                    passagem.ExibirEmpresas();
-                    // passagem.RemoverEmpresa();
-                    passagem.VenderPassagem();
+                    MenuAeroporto aeroporto = new MenuAeroporto();
+                    aeroporto.MenuDoAeroporto(fastfood, selfservice, lojas, passagens);
                     break;
                 case 0:
                     Console.WriteLine("Obrigado pela visita, volte sempre! :)");

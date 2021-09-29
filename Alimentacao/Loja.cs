@@ -48,7 +48,8 @@ namespace projeto1{
                     break;
                 case 0:
                     Inicio inicio = new Inicio();
-                    inicio.Select(fastfood, selfservice, lojas);
+                    List<IPassagem> abc = new List<IPassagem>();
+                    inicio.Select(fastfood, selfservice, lojas, abc);
                     break;
             }
         }

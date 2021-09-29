@@ -42,13 +42,13 @@ namespace projeto1 // adaptação para o codigo do projeto.
         }
         public void RemoverProdutoSelfService()
         {
-            string idProduto;
+            string nomeProduto;
             do
             {
                 Console.Write("Digite um codigo ou decrição de produto para remove-lo: ");
                 nomeProduto = Console.ReadLine();
 
-                int indexProduto = produtosSelf.FindIndex(produto => produto.Nome == idProduto);
+                int indexProduto = produtosSelf.FindIndex(produto => produto.Nome == nomeProduto);
 
                 if (indexProduto == -1)
                 {
@@ -57,8 +57,8 @@ namespace projeto1 // adaptação para o codigo do projeto.
                 }
                 else
                 {
-                    produtos.RemoveAt(indexProduto);
-                    Console.WriteLine($"Foi removido o produto {idProduto} com sucesso");
+                    produtosSelf.RemoveAt(indexProduto);
+                    Console.WriteLine($"Foi removido o produto {nomeProduto} com sucesso");
                 }
 
                 CadastrarOuRemoverMaisProdutos("remover");
@@ -68,7 +68,7 @@ namespace projeto1 // adaptação para o codigo do projeto.
         }
         void CadastrarOuRemoverMaisProdutos(string cadastrarRemover)
         {
-            ListarProdutosCadastrados();
+            ListarProdutosCadastradosSelf();
 
             Console.WriteLine($"Deseja {cadastrarRemover} mais algum Self Service?");
             Console.WriteLine("0 - Não");
