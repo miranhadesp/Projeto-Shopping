@@ -1,135 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cadastrar_e_remover_produtos_FastFood
+namespace projeto1 // adaptação para o codigo do projeto.
 {
-    class Menu
+    class SelfServiceAddRem //Rodrigo - cadastrar ou remover produtos de selfservice
     {
-        public Menu(List<IProduto> produtosFast, List<IProduto> produtosLoja, double saldo)
+        string nome;
+        double preco; 
+
+        List<IProduto> produtosSelf;
+        public SelfServiceAddRem(List<IProduto> _produtos) // adicionar ou remover
         {
-            _Loja _loja = new _Loja(produtosLoja); // Cria a variavel fastFoodCadRem do tipo FastFoodCadRem e Adiciona a lista produto
+            produtosSelf = _produtos;
+        }
+        public void CadastrarSelfService() // cadastrar produto
+        {
+            string idProduto = "";
+            double preco = 0;
 
-            FastFoodCadRem fastFoodCadRem = new FastFoodCadRem(produtosFast);
-
-            menuGeral();
-
-            void menuProdutosLoja()
+            do
             {
-                Console.WriteLine("Você está no menu de produtos");
-                Console.WriteLine("0 - Voltar para o meu geral");
-                Console.WriteLine("1 - Listar Produtos Cadastrados");
-                Console.WriteLine("2 - Cadastrar Produto Loja");
-                Console.WriteLine("3 - Remover Produto Loja");
-                Console.WriteLine("4 - Iniciar compra");
-                Console.Write("Opçao selecionada: ");
+                Console.Write("Digite um codigo ou decrição de produto para inserir no cardapio de selfservice: "); //Pode ser apenas um numero, ou descricao como Rodizio de Churrasco
+                idProduto = Console.ReadLine();
 
-                switch (int.Parse(Console.ReadLine()))
-                {       //se valor digitado for 1 entrar em ListarProdutosCadastrados
-                        //se valor digitado for 2 entrar em CadastrarProdutoFastFood
-                        //se valor digitado for 3 entrar em RemoverProdutoFastFood
-                        //se valor digitado for 0 voltar para o meu geral
+                Console.Write("Digite o preço do quilo para essa opção de serf service: "); // valor do quilo da comida.
+                double.TryParse(Console.ReadLine(), out preco);
 
-                    case 0:
-                        menuGeral(); // Vai para o meu geral
-                        break;
-                    case 1:
-                        _loja.ListarProdutosCadastrados(); // Chama o método ListarProdutosCadastrados da classe FastFoodCadRem
-                        menuProdutosLoja();
-                        break;
-                    case 2:
-                        _loja.CadastrarProdutoLoja(); // Chama o método CadastrarProdutoFastFood da classe FastFoodCadRem
-                        menuProdutosLoja();
-                        break;
-                    case 3:
-                        _loja.RemoverProdutoLoja(); // Chama o método RemoverProdutoFastFood da classe FastFoodCadRem
-                        menuProdutosLoja();
-                        break;
-                    case 4:
-                        Console.WriteLine("Não tá pronto ainda");
-                        break;
-                    default:
-                        Console.WriteLine("Opção invalida tente novamente seu burrinho");
-                        menuProdutosLoja();
-                        break;
-                }
+                produtosSelf.Add(new Produto(idProduto, preco));
+
+                CadastrarOuRemoverMaisProdutos("cadastrar");
+
+            } while (int.Parse(Console.ReadLine()) == 1);
+        }
+        public void ListarProdutosCadastradosSelf()
+        {
+            Console.WriteLine("Esses são os produtos cadastrados: ");
+            foreach (Produto _produto in produtosSelf)
+            {
+                Console.WriteLine($"Produto: {_produto.Nome} - Preco: {_produto.Preco} R$ o quilo. ");
             }
-
-            void menuProdutosFast()
+        }
+        public void RemoverProdutoSelfService()
+        {
+            string idProduto;
+            do
             {
-                Console.WriteLine("Você está no menu de produtos FastFood");
-                Console.WriteLine("0 - Voltar para o meu geral");
-                Console.WriteLine("1 - Listar Produtos Cadastrados");
-                Console.WriteLine("2 - Cadastrar Produto FastFood");
-                Console.WriteLine("3 - Remover Produto FastFoods");
-                Console.WriteLine("4 - Iniciar compra");
-                Console.Write("Opçao selecionada: ");
+                Console.Write("Digite um codigo ou decrição de produto para remove-lo: ");
+                nomeProduto = Console.ReadLine();
 
-                switch (int.Parse(Console.ReadLine()))
-                {       //se valor digitado for 1 entrar em ListarProdutosCadastrados
-                        //se valor digitado for 2 entrar em CadastrarProdutoFastFood
-                        //se valor digitado for 3 entrar em RemoverProdutoFastFood
-                        //se valor digitado for 0 voltar para o meu geral
+                int indexProduto = produtosSelf.FindIndex(produto => produto.Nome == idProduto);
 
-                    case 0:
-                        menuGeral(); // Vai para o meu geral
-                        break;
-                    case 1:
-                        fastFoodCadRem.ListarProdutosCadastradosFast(); // Chama o método ListarProdutosCadastrados da classe FastFoodCadRem
-                        menuProdutosFast();
-                        break;
-                    case 2:
-                        fastFoodCadRem.CadastrarProdutoFast(); // Chama o método CadastrarProdutoFastFood da classe FastFoodCadRem
-                        menuProdutosFast();
-                        break;
-                    case 3:
-                        fastFoodCadRem.RemoverProdutoFast(); // Chama o método RemoverProdutoFastFood da classe FastFoodCadRem
-                        menuProdutosFast();
-                        break;
-                    case 4:
-                        Console.WriteLine("Não tá pronto ainda");
-                        break;
-                    default:
-                        Console.WriteLine("Opção invalida tente novamente seu burrinho");
-                        menuProdutosFast();
-                        break;
-                }
-            }
-            void menuGeral()
-            {
-                Console.WriteLine("Você está no menu e compras");
-                Console.WriteLine("0 - Voltar para o cadastro de lojas");
-                Console.WriteLine("1 - Menu de produtos fastfood");
-                Console.WriteLine("2 - Menu dos preços selfservice");
-                Console.WriteLine("3 - Menu dos produtos de loja");
-                Console.WriteLine("4 - Iniciar compras!");
-
-                Console.Write("Opçao selecionada: ");
-
-                switch (int.Parse(Console.ReadLine()))
+                if (indexProduto == -1)
                 {
-                    case 0:
-                        Environment.Exit(0);
-                        break;
-                    case 1:
-                        menuProdutosFast();
-                        break;
-                    case 2:
-                        Console.WriteLine("Não tá pronto ainda meu rei");
-                        break;
-                    case 3:
-                        menuProdutosLoja();
-                        break;
-                    case 4:
-                        Console.WriteLine("Não tá pronto ainda meu rei");
-                        break;
-                    default:
-                        Console.WriteLine("Opção invalida tente novamente seu burrinho");
-                        menuGeral();
-                        break;
+                    Console.WriteLine("Produto não encontrado, tente novamente");
+                    RemoverProdutoSelfService();
+                }
+                else
+                {
+                    produtos.RemoveAt(indexProduto);
+                    Console.WriteLine($"Foi removido o produto {idProduto} com sucesso");
                 }
 
-            }
+                CadastrarOuRemoverMaisProdutos("remover");
+
+
+            } while (int.Parse(Console.ReadLine()) == 1);
+        }
+        void CadastrarOuRemoverMaisProdutos(string cadastrarRemover)
+        {
+            ListarProdutosCadastrados();
+
+            Console.WriteLine($"Deseja {cadastrarRemover} mais algum Self Service?");
+            Console.WriteLine("0 - Não");
+            Console.WriteLine("1 - Sim");
         }
     }
 }
-
