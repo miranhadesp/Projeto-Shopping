@@ -9,8 +9,9 @@ namespace projeto1{
         
         string Nome{ get; set;}
         
+    }
         // void Vender();
 
         // void Carrinho();
-    }
+    
 }

@@ -212,6 +212,43 @@ namespace projeto1
             //Exibimos as passagens disponíveis
             Console.WriteLine("Passagens Disponíveis: ");
 
+            //Alterado por Thais
+            Dictionary<int,string> passagem = new Dictionary<int,string>();
+            passagem.Add(1,"- Fortaleza");
+            passagem.Add(2,"- Curitiba");
+            passagem.Add(3,"- Porto Alegre");
+            passagem.Add(4,"- Maceio");
+            passagem.Add(5,"- Rio de Janeiro");
+            foreach(KeyValuePair<int,string> s in passagem)
+            {
+                Console.WriteLine(s);
+            }
+            Console.Write("Escolha seu destino:");
+            var escolha=Convert.ToInt32(Console.ReadLine());
+            if(escolha<1&&escolha>5)
+            {
+                Console.WriteLine("Destino indisponível");
+            }
+            else if(escolha==1)
+            {
+                Console.WriteLine("Seu destino é Fortaleza");
+            }
+            else if(escolha==2)
+            {
+                Console.WriteLine("Seu destino é Curituba");
+            }
+            else if(escolha==3)
+            {
+                Console.WriteLine("Seu destino é Porto Alegre");
+            }
+            else if(escolha==4)
+            {
+                Console.WriteLine("Seu destino é Maceio");
+            }
+            else if(escolha==5)
+            {
+                 Console.WriteLine("Seu destino é Rio de Janeiro");
+            }
             //Percorremos na interface IPassagem com a variavel e, em passagens
             foreach (IPassagem e in passagens)
             {

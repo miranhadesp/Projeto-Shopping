@@ -76,7 +76,7 @@ namespace projeto1{
 
         // 2 CADASTRA PROD
         //Alteração feita por Thais
-        void CadastrarProduto(){
+            void CadastrarProduto(){
             List<string>produto=new List<string>();
             Console.WriteLine("Cadastre o produto desejado: ");
             produto.Add("");
@@ -88,9 +88,9 @@ namespace projeto1{
                 foreach(string n in produto)
                 {
                 Console.WriteLine(n);
-                }   */
+                }   
         }
-
+      
         // Verificar quais os itens tem no carrinho
         void Carrinho(){
             Console.WriteLine($"O(s) item(ns) 'x','y','z' estão no carinho");
@@ -109,6 +109,6 @@ namespace projeto1{
 
 
              /* var preparo = "Seu Pedido está sendo preparado";
-                var fim = "Pedido finalizado, por favor retire no balcão";   */
-    }
+              var fim = "Pedido finalizado, por favor retire no balcão";   */
+    }}
 }
