@@ -74,6 +74,21 @@ namespace projeto1{
  
 
         // 2 CADASTRA PROD
+        //Alteração feita por Thais
+        void Produto(){
+            List<string>produto=new List<string>();
+            console.WriteLine("Cadastre o produto desejado: ");
+            produto.Add("");
+            produto.Add("");
+            produto.Add("");
+            produto.Add(""));
+            /*produto.Add("Big Mac");
+                produto.Add("Whopper");
+                foreach(string n in produto)
+                {
+                Console.WriteLine(n);
+                }   */
+        }
 
         // Verificar quais os itens tem no carrinho
         void Carrinho(){

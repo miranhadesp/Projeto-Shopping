@@ -70,7 +70,7 @@ namespace projeto1{
             int numeroDeEmpresas;
 
             //Imprime no console quantas empresas de passagens serão cadastradas.
-            Console.WriteLine("Digite o numero de empresas que deseja cadastrar: ");
+            Console.WriteLine("Digite o número de empresas que deseja cadastrar: ");
 
             //Lê e atribui para a variavel numeroDeEmpresas
             numeroDeEmpresas = Int32.Parse(Console.ReadLine());
@@ -84,6 +84,23 @@ namespace projeto1{
 
                 //Lê o nome da empresa.
                 nomeEmpresa = Console.ReadLine();
+                //Alteração de classe feita por Thais
+                Console.WriteLine("Para Classe Econômica digite 1");
+                Console.WriteLine("Para Classe Executiva digite 2");
+                Console.WriteLine("Para Primeira Classe digite 3 ");
+                Console.Write("Opção: ");
+                int classeViagem=Convert.ToInt32(Console.ReadLine());
+                if(classeViagem==1){
+                    Console.WriteLine("Você escolheu a Classe Econômica.");
+                }
+                else if(classeViagem==2){
+                    Console.WriteLine("Você escolheu a Classe Executiva.");
+                }
+                else if(classeViagem==3){
+                    Console.WriteLine("Você escolheu viajar de Primeira Classe.");
+                    Console.WriteLine("Receberá champagne e chocolates durante a viagem.");
+                }
+
 
                 //Imprime no console a mensagem abaixo:
                 Console.WriteLine("Digite o preço da passagem: ");
@@ -137,6 +154,15 @@ namespace projeto1{
                 Console.WriteLine($"A empresa {NomeEmpresa} foi removida com sucesso!");
             }
         }
+       /* public void EscolherClasse() // Feito por Thais
+         {
+            List<string> tipo;
+            tipo = new List<string> { "Classe Econômica", "Classe Executiva", "Primeira Classe" };
+            foreach(string i in tipo)
+            {
+                Console.WriteLine(i);
+        
+        }   }*/
 
         //Metódo para vender a passagem.
         public void VenderPassagem()
@@ -171,16 +197,20 @@ namespace projeto1{
             //Se não, pedimos para ele ir buscar mais dinheiro em casa.
             else
             {
-                Console.WriteLine("Vá para casa conseguir mais dinheiro.");
+                Console.WriteLine("Não foi possível realizar a operação. Saldo insuficiente. "); //Texto alterado Thais
                 Environment.Exit(0);
             }
         }
 
-        // public void EscolherClasse()
-        // {
-        //     string[] tipo = new string["Pobre", "Média", "Rica"];
-
-        //     // Console.WriteLine("Digite ")            
+        /* public void EscolherClasse()
+         {
+            List<string> tipo;
+            tipo = new List<string> { "Classe Econômica", "Classe Executiva", "Primeira Classe" };
+            foreach(string i in tipo)
+            {
+                Console.WriteLine(i);
+        
+        }   }*/
      
     }
 }

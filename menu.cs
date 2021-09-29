@@ -16,6 +16,7 @@ namespace projeto1{
             Console.WriteLine("3 - Lojas");
             Console.WriteLine("4 - Aeroporto");
             Console.WriteLine("0 - Sair do programa");
+            Console.Write("Opção Desejada: "); //Alteração (Thais)
             Int32.TryParse(Console.ReadLine(), out opcao);
 
             switch(opcao){

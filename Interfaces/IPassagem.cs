@@ -14,6 +14,7 @@ namespace projeto1{
          double PrecoPassagem {get;set;}
 
          string Destino {get;set;}
+         
 
         //  public void VenderPassagem();
     }
