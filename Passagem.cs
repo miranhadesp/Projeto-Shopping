@@ -54,7 +54,7 @@ namespace projeto1
         public void CadastrarPassagem(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens)
         { //Metodo para cadastrar as passagens.
 
-            Console.Write("\nDigite o nome da passagem: ");
+            Console.Write("\nDigite o nome da cia que deseja viajar: "); //Alteração feita por Thais
             empresaPassagem = Console.ReadLine();
 
             Console.Write("Digite o preco da passagem : R$ ");
@@ -64,6 +64,7 @@ namespace projeto1
             destinoPassagem = Console.ReadLine();
 
             passagens.Add(new Passagem(IdPassagem, empresaPassagem, precoPassagem, destinoPassagem));
+            //foreach ?  -> Thais
 
             inicio.MenuGeral(lojas, clientes, passagens);
         }

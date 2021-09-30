@@ -14,7 +14,7 @@ namespace projeto1
             Loja loja = new Loja();
             Passagem passagem = new Passagem();
             Cliente cliente = new Cliente();
-
+            Console.WriteLine("Seja Bem vindo ao Shopping Catarina");//Alteração feita por Thais
             Console.WriteLine("\nVocê está no menu geral");
             Console.WriteLine("0 - Sair do programa");
             Console.WriteLine("1 - Cadastrar loja");
@@ -41,6 +41,7 @@ namespace projeto1
                     break;
                 case 4:
                     // Cadastrar Passagem
+                    passagem.CadastrarPassagem(lojas,clientes,passagens); //Alteração feita por Thais
                      break;
                 case 5:
                     //Simular Compra
@@ -49,7 +50,7 @@ namespace projeto1
                     //exibir lojas
                     break;
                 default:
-                    Console.WriteLine("Opção invalida tente novamente seu burrinho");
+                    Console.WriteLine("Opção invalida. Tente novamente."); //Alteração feita por Thais
                     MenuGeral(lojas, clientes, passagens);
                     break;
                 }
