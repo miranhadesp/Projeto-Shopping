@@ -57,9 +57,10 @@ namespace projeto1
                     break;
 
                 default:
-                    Console.WriteLine("Opção invalida, tente novamente seu burrinho");
+                    Console.WriteLine("Opção inválida, tente novamente seu burrinho");
                     MenuGeral(lojas, produtos, clientes, passagens);
                     break;
+                    
                 }
             }
 

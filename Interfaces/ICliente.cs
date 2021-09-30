@@ -7,5 +7,6 @@ namespace projeto1
         string NomeCliente {get; set;}
 
         int Cpf {get; set;}
+        
     }
 }

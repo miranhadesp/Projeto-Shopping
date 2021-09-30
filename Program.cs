@@ -19,6 +19,7 @@ namespace projeto1{
             List<IProduto> produtos = new List<IProduto>();//lista para os produtos
 
             Console.WriteLine("Bem vindo(a) ao Shopping Catarina.");
+            
             inicio.MenuGeral(lojas, produtos, clientes, passagens); 
         }
     }

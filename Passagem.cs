@@ -72,6 +72,7 @@ namespace projeto1
             Console.WriteLine("\nCadastro realizado com sucesso!");
 
             inicio.MenuGeral(lojas, produtos, clientes, passagens);
+            
         }
 
         public void ExibirPassagem(List<IPassagem> passagens)

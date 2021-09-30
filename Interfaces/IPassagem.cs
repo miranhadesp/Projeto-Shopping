@@ -9,5 +9,6 @@ namespace projeto1
         double PrecoPassagem {get; set;}
 
         string DestinoPassagem {get; set;}
+        
     }
 }

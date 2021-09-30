@@ -7,5 +7,6 @@ namespace projeto1
         string NomeLoja { get; set; }
 
         string Segmento { get; set; }
+        
     }
 }

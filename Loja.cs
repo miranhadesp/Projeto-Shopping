@@ -49,6 +49,7 @@ namespace projeto1
         }
 
         public void CadastrarLoja(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens){
+            
 
             Console.Write("\nDigite o código da sua loja: ");
             Id = Convert.ToInt32(Console.ReadLine());

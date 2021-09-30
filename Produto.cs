@@ -66,6 +66,7 @@ namespace projeto1
                     Console.WriteLine("\nOpção inválida, voltando ao menu...");
                     inicio.MenuGeral(lojas, produtos, clientes, passagens);
                     break;
+                    
             }
         }
     }

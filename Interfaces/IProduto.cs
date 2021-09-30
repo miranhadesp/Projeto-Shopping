@@ -4,5 +4,6 @@ namespace projeto1
     {
         string Nome { get; set; }
         double Preco { get; }
+        
     }
 }
