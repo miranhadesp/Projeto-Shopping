@@ -9,59 +9,49 @@ namespace projeto1{
 
     public class Cliente : ICliente{
 
-        List<ICliente> cliente = new List<ICliente>();
-
-        private double carteira;
-        public double Carteira {
-            get {return carteira;}
-            set {carteira = value;}
+        private string nomeCliente;
+        public string NomeCliente{
+            get{ return nomeCliente; }
+            set{ nomeCliente = value; }
         }
 
-        private string nome;
-        public string Nome{
-            get{ return nome; }
-            set{ nome = value; }
-        }
-        
         private int cpf;
         public int Cpf{
             get{ return cpf; }
             set{ cpf = value; }
         }
 
-        public Cliente(){
+        Inicio inicio = new Inicio();
+
+        public Cliente(){ //Construtor para o caso de sem parâmetros
 
         }
+        public Cliente(string nome, int cpf){ //Construtor com dois parâmetros
 
-        private Cliente(int cpf, string nome, double carteira){
-
+            NomeCliente = nome;
             Cpf = cpf;
-            Nome = nome;
-            Carteira = carteira;
         }
 
-        public void CadastrarCliente(){ // -> Victor Augusto
+        public void CadastrarCliente(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens){ //cadastro cliente puxando lista cliente
+            
+            Console.Write("\nDigite seu nome: ");
+            NomeCliente = Console.ReadLine();
 
-            double carteira = 0;
-
-            Console.Write("\nDigite seu nome para cadastro: ");
-            Nome = Console.ReadLine();
-
-            Console.Write("Digite seu cpf: ");
+            Console.Write("Digite seu CPF: ");
             Cpf = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Qual o valor existente na carteira? ");
-            double.TryParse(Console.ReadLine(), out carteira);
-            Carteira = carteira;
-
-            cliente.Add(new Cliente(Cpf, Nome, Carteira));
-
-            foreach (ICliente e in cliente){
-                
-                Console.WriteLine($"\nCPF: {e.Cpf}");
-                Console.WriteLine($"Nome: {e.Nome}");
-                Console.WriteLine($"Disponível na carteira: {e.Carteira}R$");
+            foreach(ICliente e in clientes){ //verificando se o cpf já foi cadastrado
+                if(Cpf == e.Cpf){
+                    Console.WriteLine("Opção inválida, tente novamente.");
+                    CadastrarCliente(lojas, clientes, passagens); 
+                }
             }
+
+            clientes.Add(new Cliente(NomeCliente, Cpf));
+
+            Console.WriteLine("Cadastro realizado com sucesso!"); //se passou da verificação acima, cadastrado com sucesso
+
+            inicio.MenuGeral(lojas, clientes, passagens);
         }
     }   
 }

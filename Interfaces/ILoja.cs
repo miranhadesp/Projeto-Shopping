@@ -1,17 +1,16 @@
-using System;
+namespace projeto1
+{
+    public interface ILoja
+    {
+        int Id { get; set; }
 
+        string NomeLoja { get; set; }
+        string Segmento { get; set; }
 
-namespace projeto1{
+        string NomeProduto { get; set; }
 
-    public interface ILoja{
+        double PrecoProduto { get; set; }
 
-        int Id {get;}
-        
-        string Nome{ get; set;}
-        
+        public void CadastrarProdutos() { }
     }
-        // void Vender();
-
-        // void Carrinho();
-    
 }

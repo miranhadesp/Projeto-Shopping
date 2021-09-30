@@ -1,10 +1,8 @@
-using System;
-
-namespace projeto1{
-
-    public interface IProduto : ILoja{
-
-        double Preco {get; set;} 
-       
+namespace projeto1
+{
+    public interface IProduto
+    {
+        string Nome { get; set; }
+        double Preco { get; }
     }
 }

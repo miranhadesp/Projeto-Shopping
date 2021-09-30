@@ -1,21 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace projeto1
+{
+    public interface IPassagem
+    {
+        int IdPassagem {get; set;}
 
-namespace projeto1{
+        string EmpresaPassagem {get; set;}
 
-     public interface IPassagem{
+        double PrecoPassagem {get; set;}
 
-         int Id {get; set;}
-
-         string NomeEmpresa {get;set;}
-
-         double PrecoPassagem {get;set;}
-
-         string Destino {get;set;}
-         
-
-        //  public void VenderPassagem();
+        string DestinoPassagem {get; set;}
     }
 }

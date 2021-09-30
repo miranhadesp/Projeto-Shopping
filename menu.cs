@@ -4,43 +4,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projeto1{
+namespace projeto1
+{
+    class Inicio
+    {  
+        public void MenuGeral(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens)
+        {
 
-    class Inicio{
-        public void Select(Dictionary <int, string> fastfood , Dictionary <int, string> selfservice,  Dictionary <int, string> lojas, List<IPassagem> passagens){
-            int opcao;
+            Loja loja = new Loja();
+            Passagem passagem = new Passagem();
+            Cliente cliente = new Cliente();
 
-            Console.WriteLine("\nEscolha o segmento desejado");
-            Console.WriteLine("1 - FastFood");
-            Console.WriteLine("2 - Selfservice");
-            Console.WriteLine("3 - Lojas");
-            Console.WriteLine("4 - Aeroporto");
+            Console.WriteLine("\nVocê está no menu geral");
             Console.WriteLine("0 - Sair do programa");
-            Console.Write("Opção Desejada: "); //Alteração (Thais)
-            Int32.TryParse(Console.ReadLine(), out opcao);
+            Console.WriteLine("1 - Cadastrar loja");
+            Console.WriteLine("2 - Cadastrar produto");
+            Console.WriteLine("3 - Cadastrar cliente");
+            Console.WriteLine("4 - Cadastrar passagem");
+            Console.WriteLine("5 - Realizar compra");
+            Console.WriteLine("6 - Exibir lojas cadastradas");
+            Console.Write("Opçao selecionada: ");
 
-            switch(opcao){
-                case 1:
-                    FastFood fast = new FastFood();
-                    fast.MenuFastFood(fastfood, selfservice, lojas);
-                    break;
-                case 2:
-                    SelfService self = new SelfService();
-                    self.MenuSelfService(fastfood, selfservice, lojas);
-                    break;
-                case 3:
-                    Loja loja = new Loja();
-                    loja.MenuLoja(fastfood, selfservice, lojas);
-                    break;
-                case 4:
-                    MenuAeroporto aeroporto = new MenuAeroporto();
-                    aeroporto.MenuDoAeroporto(fastfood, selfservice, lojas, passagens);
-                    break;
+            switch (int.Parse(Console.ReadLine()))
+            {
                 case 0:
-                    Console.WriteLine("Obrigado pela visita, volte sempre! :)");
                     Environment.Exit(0);
                     break;
+                case 1:
+                    loja.CadastrarLoja(lojas, clientes, passagens);
+                    break;
+                case 2:
+                    loja.CadastrarProdutos(lojas, clientes, passagens);
+                    break;
+                case 3:
+                    cliente.CadastrarCliente(lojas, clientes, passagens);
+                    break;
+                case 4:
+                    // Cadastrar Passagem
+                     break;
+                case 5:
+                    //Simular Compra
+                        break;
+                case 6:
+                    //exibir lojas
+                    break;
+                default:
+                    Console.WriteLine("Opção invalida tente novamente seu burrinho");
+                    MenuGeral(lojas, clientes, passagens);
+                    break;
+                }
             }
-        }
+
     }
 }
+
