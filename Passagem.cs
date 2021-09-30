@@ -58,15 +58,15 @@ namespace projeto1
             IdPassagem = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Digite o nome da empresa da passagem: "); //Alteração feita por Thais
-            empresaPassagem = Console.ReadLine();
+            EmpresaPassagem = Console.ReadLine();
 
             Console.Write("Digite o preco da passagem : R$ ");
-            precoPassagem = Double.Parse(Console.ReadLine());
+            PrecoPassagem = Double.Parse(Console.ReadLine());
 
             Console.Write("Digite o destino da passagem : ");
-            destinoPassagem = Console.ReadLine();
+            DestinoPassagem = Console.ReadLine();
 
-            passagens.Add(new Passagem(IdPassagem, empresaPassagem, precoPassagem, destinoPassagem));
+            passagens.Add(new Passagem(IdPassagem, EmpresaPassagem, PrecoPassagem, DestinoPassagem));
             //foreach ?  -> Thais
 
             Console.WriteLine("\nCadastro realizado com sucesso!");
@@ -84,35 +84,50 @@ namespace projeto1
 
             foreach (IPassagem e in passagens)
             {
-                Console.Write($"{i}) Id : {e.IdPassagem}, Nome : {e.EmpresaPassagem}, Preço : {e.PrecoPassagem}R$, Destino: {e.DestinoPassagem}");
+                Console.Write($"\n{i}) Id : {e.IdPassagem}, Nome : {e.EmpresaPassagem}, Preço : {e.PrecoPassagem}R$, Destino: {e.DestinoPassagem}");
                 i++;
             }
         }
 
+
         public void VenderPassagem(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         { //Metodo de venda de passagem, que eventualmente faz uma verificação do id digitado, com o id da passagem.
-            
-            Cliente nomePassageiro = new Cliente();
 
-            Console.WriteLine($"Olá {nomePassageiro.NomeCliente}");
-            Console.WriteLine("Digite o Id da passagem desejada : ");
+            bool encontrar = false;
+            string destino = " ";
+
+            foreach (ICliente e in clientes)
+            {
+            Console.WriteLine($"\nOlá, {e.NomeCliente}. Bem vindo :)");
+            }
+
+            Console.Write("\nDigite o Id da passagem desejada : ");
             int idPassagemVenda = Int32.Parse(Console.ReadLine());
 
             foreach (IPassagem e in passagens)
             {
                 if (idPassagemVenda == e.IdPassagem){
-                    
-                    Console.Write("Digite a quantidade de bagagem a ser registrada: ");
-                    int qtdBagagem = Int32.Parse(Console.ReadLine());
-                    
-                    Console.WriteLine($"Venda da passagem com destino para {e.DestinoPassagem} realizada com sucesso!");
-                    Console.WriteLine($"A quantidade de bagagem registrada foi: {qtdBagagem}");
+
+                    destino = e.DestinoPassagem;
+                    encontrar = true;
+                    break;
                 }
             }
 
-            Console.WriteLine("Id não encontrado, tente novamente.");
-            VenderPassagem(lojas, produtos, clientes, passagens);
+            if(encontrar){
+                Console.Write("Digite a quantidade de bagagem a ser registrada: ");
+                int qtdBagagem = Int32.Parse(Console.ReadLine());
+                    
+                Console.WriteLine($"Venda da passagem com destino para {destino} realizada com sucesso!");
+                Console.WriteLine($"A quantidade de bagagem registrada foi: {qtdBagagem}");
+
+                inicio.MenuGeral(lojas, produtos, clientes, passagens);
+            }
+            else{
+                Console.WriteLine("Id não encontrado, tente novamente.");
+                VenderPassagem(lojas, produtos, clientes, passagens);
+            }
+
         }
-        
     }
 }

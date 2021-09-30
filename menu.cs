@@ -15,8 +15,9 @@ namespace projeto1
             Produto produto = new Produto();
             Passagem passagem = new Passagem();
             Cliente cliente = new Cliente();
-
-            Console.WriteLine("\nSelecione a opção desjeada"); //-> mudança na ordem das opções 
+            Compra compra = new Compra();
+            
+            Console.WriteLine("\nSelecione a opção desejada"); //-> mudança na ordem das opções 
             Console.WriteLine("1 - Cadastrar loja");
             Console.WriteLine("2 - Cadastrar produto");
             Console.WriteLine("3 - Cadastrar passagem");
@@ -44,7 +45,11 @@ namespace projeto1
                     break;
 
                 case 4:
-                    cliente.CadastrarCliente(lojas, produtos, clientes, passagens); //-> cadastros passando todas as listas do programa como parâmetro para poder voltar ao menu após definição
+                    int indexCliente = clientes.FindIndex(e => e.Id == 1);
+
+                    if (indexCliente == -1) cliente.CadastrarCliente(lojas, produtos, clientes, passagens);
+                    
+                    else compra.RealizarCompra(lojas, produtos, clientes, passagens);   
                     break;
 
                 case 5: //-> exibir tudo e chamar o menu direto após

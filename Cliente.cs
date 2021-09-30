@@ -9,6 +9,12 @@ namespace projeto1{
 
     public class Cliente : ICliente{
 
+        private int id;
+        public int Id{
+            get{ return id; }
+            set{ id = value; }
+        }
+        
         private string nomeCliente;
         public string NomeCliente{
             get{ return nomeCliente; }
@@ -21,31 +27,37 @@ namespace projeto1{
             set{ cpf = value; }
         }
 
+        Compra compra = new Compra();
         Inicio inicio = new Inicio();
 
         public Cliente(){ //Construtor para o caso de sem parâmetros
 
         }
-        public Cliente(string nome, int cpf){ //Construtor com dois parâmetros
-
+        public Cliente(int id, string nome, int cpf){ //Construtor com dois parâmetros
+            
+            Id = id;
             NomeCliente = nome;
             Cpf = cpf;
         }
 
         public void CadastrarCliente(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens){ //cadastro cliente puxando lista cliente
-            
+
             Console.Write("\nDigite seu nome: ");
             NomeCliente = Console.ReadLine();
 
             Console.Write("Digite seu CPF: ");
             Cpf = Convert.ToInt32(Console.ReadLine());
 
-            clientes.Add(new Cliente(NomeCliente, Cpf));
+            clientes.Add(new Cliente(1, NomeCliente, Cpf));
 
-            Console.WriteLine("Cadastro realizado com sucesso!"); 
+            foreach (ICliente e in clientes)
+            {
+                Console.WriteLine(e.Id);
+            }
 
-            inicio.MenuGeral(lojas, produtos, clientes, passagens); 
+            Console.WriteLine("\nCadastro realizado com sucesso!"); 
+
+            inicio.MenuGeral(lojas, produtos, clientes, passagens);
         }
-        
     }   
 }
