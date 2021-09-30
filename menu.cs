@@ -8,49 +8,57 @@ namespace projeto1
 {
     class Inicio
     {  
-        public void MenuGeral(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens)
+        public void MenuGeral(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         {
 
             Loja loja = new Loja();
+            Produto produto = new Produto();
             Passagem passagem = new Passagem();
             Cliente cliente = new Cliente();
 
-            Console.WriteLine("\nVocê está no menu geral");
-            Console.WriteLine("0 - Sair do programa");
+            Console.WriteLine("\nSelecione a opção desjeada"); //-> mudança na ordem das opções 
             Console.WriteLine("1 - Cadastrar loja");
             Console.WriteLine("2 - Cadastrar produto");
-            Console.WriteLine("3 - Cadastrar cliente");
-            Console.WriteLine("4 - Cadastrar passagem");
-            Console.WriteLine("5 - Realizar compra");
-            Console.WriteLine("6 - Exibir lojas cadastradas");
-            Console.Write("Opçao selecionada: ");
+            Console.WriteLine("3 - Cadastrar passagem");
+            Console.WriteLine("4 - Realizar compra");
+            Console.WriteLine("5 - Exibir lojas e passagens cadastradas");
+            Console.WriteLine("0 - Sair do programa");
+            Console.Write("\nOpçao selecionada: ");
 
             switch (int.Parse(Console.ReadLine()))
             {
                 case 0:
                     Environment.Exit(0);
                     break;
+
                 case 1:
-                    loja.CadastrarLoja(lojas, clientes, passagens);
+                    loja.CadastrarLoja(lojas, produtos, clientes, passagens); //-> cadastros passando todas as listas do programa como parâmetro para poder voltar ao menu após definição
                     break;
+
                 case 2:
-                    loja.CadastrarProdutos(lojas, clientes, passagens);
+                    produto.CadastrarProdutos(lojas, produtos, clientes, passagens); //-> cadastros passando todas as listas do programa como parâmetro para poder voltar ao menu após definição
                     break;
+
                 case 3:
-                    cliente.CadastrarCliente(lojas, clientes, passagens);
+                    passagem.CadastrarPassagem(lojas, produtos, clientes, passagens); //-> cadastros passando todas as listas do programa como parâmetro para poder voltar ao menu após definição
                     break;
+
                 case 4:
-                    // Cadastrar Passagem
-                     break;
-                case 5:
-                    //Simular Compra
-                        break;
-                case 6:
-                    //exibir lojas
+                    cliente.CadastrarCliente(lojas, produtos, clientes, passagens); //-> cadastros passando todas as listas do programa como parâmetro para poder voltar ao menu após definição
                     break;
+
+                case 5: //-> exibir tudo e chamar o menu direto após
+                    loja.ExibirLojas(lojas); 
+                    passagem.ExibirPassagem(passagens); 
+
+                    Console.Write("\n");
+
+                    MenuGeral(lojas, produtos, clientes, passagens);
+                    break;
+
                 default:
-                    Console.WriteLine("Opção invalida tente novamente seu burrinho");
-                    MenuGeral(lojas, clientes, passagens);
+                    Console.WriteLine("Opção invalida, tente novamente seu burrinho");
+                    MenuGeral(lojas, produtos, clientes, passagens);
                     break;
                 }
             }

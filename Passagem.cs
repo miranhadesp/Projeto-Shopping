@@ -51,10 +51,13 @@ namespace projeto1
             DestinoPassagem = destinoPassagem;
         }
         
-        public void CadastrarPassagem(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens)
+        public void CadastrarPassagem(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         { //Metodo para cadastrar as passagens.
 
-            Console.Write("\nDigite o nome da passagem: ");
+            Console.Write("\nDigite o código da passagem: ");
+            IdPassagem = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Digite o nome da empresa da passagem: "); //Alteração feita por Thais
             empresaPassagem = Console.ReadLine();
 
             Console.Write("Digite o preco da passagem : R$ ");
@@ -64,21 +67,28 @@ namespace projeto1
             destinoPassagem = Console.ReadLine();
 
             passagens.Add(new Passagem(IdPassagem, empresaPassagem, precoPassagem, destinoPassagem));
+            //foreach ?  -> Thais
 
-            inicio.MenuGeral(lojas, clientes, passagens);
+            Console.WriteLine("\nCadastro realizado com sucesso!");
+
+            inicio.MenuGeral(lojas, produtos, clientes, passagens);
         }
 
-        public void ExibirPassagem(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens)
-        { //Metodo para exibir as passagens que estão disponíveis 
-            Console.WriteLine("Passagens Disponíveis encontradas :");
+        public void ExibirPassagem(List<IPassagem> passagens)
+        { //Metodo para exibir as passagens que estão disponíveis
+
+            int i = 1;
+
+            Console.WriteLine("\nPassagens cadastradas:");
 
             foreach (IPassagem e in passagens)
             {
-                Console.Write($"Id : {e.IdPassagem}, Nome : {e.EmpresaPassagem}, Preço : R${e.PrecoPassagem}, Destino: {e.DestinoPassagem}, ");
+                Console.Write($"{i}) Id : {e.IdPassagem}, Nome : {e.EmpresaPassagem}, Preço : {e.PrecoPassagem}R$, Destino: {e.DestinoPassagem}");
+                i++;
             }
         }
 
-        public void VenderPassagem(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens)
+        public void VenderPassagem(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         { //Metodo de venda de passagem, que eventualmente faz uma verificação do id digitado, com o id da passagem.
             
             Cliente nomePassageiro = new Cliente();
@@ -100,7 +110,7 @@ namespace projeto1
             }
 
             Console.WriteLine("Id não encontrado, tente novamente.");
-            VenderPassagem(lojas, clientes, passagens);
+            VenderPassagem(lojas, produtos, clientes, passagens);
         }
         
     }

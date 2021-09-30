@@ -32,7 +32,7 @@ namespace projeto1{
             Cpf = cpf;
         }
 
-        public void CadastrarCliente(List<ILoja> lojas, List<ICliente> clientes, List<IPassagem> passagens){ //cadastro cliente puxando lista cliente
+        public void CadastrarCliente(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens){ //cadastro cliente puxando lista cliente
             
             Console.Write("\nDigite seu nome: ");
             NomeCliente = Console.ReadLine();
@@ -40,18 +40,11 @@ namespace projeto1{
             Console.Write("Digite seu CPF: ");
             Cpf = Convert.ToInt32(Console.ReadLine());
 
-            foreach(ICliente e in clientes){ //verificando se o cpf já foi cadastrado
-                if(Cpf == e.Cpf){
-                    Console.WriteLine("Opção inválida, tente novamente.");
-                    CadastrarCliente(lojas, clientes, passagens); 
-                }
-            }
-
             clientes.Add(new Cliente(NomeCliente, Cpf));
 
-            Console.WriteLine("Cadastro realizado com sucesso!"); //se passou da verificação acima, cadastrado com sucesso
+            Console.WriteLine("Cadastro realizado com sucesso!"); 
 
-            inicio.MenuGeral(lojas, clientes, passagens);
+            inicio.MenuGeral(lojas, produtos, clientes, passagens); 
         }
     }   
 }
