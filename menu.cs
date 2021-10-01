@@ -47,13 +47,17 @@ namespace projeto1
                 case 4:
                     int indexCliente = clientes.FindIndex(e => e.Id == 1);
 
-                    if (indexCliente == -1) cliente.CadastrarCliente(lojas, produtos, clientes, passagens);
-                    
+                    if (indexCliente == -1){
+                        Console.WriteLine("\nPercebemos que você não possui cadastro no nosso sistema.");
+                        Console.WriteLine("Siga os passas a seguir para continuar :)");
+
+                        cliente.CadastrarCliente(lojas, produtos, clientes, passagens);
+                    }
                     else compra.RealizarCompra(lojas, produtos, clientes, passagens);   
                     break;
 
                 case 5: //-> exibir tudo e chamar o menu direto após
-                    loja.ExibirLojas(lojas); 
+                    loja.ExibirLojas(lojas, produtos); 
                     passagem.ExibirPassagem(passagens); 
 
                     Console.Write("\n");
@@ -62,10 +66,9 @@ namespace projeto1
                     break;
 
                 default:
-                    Console.WriteLine("Opção inválida, tente novamente seu burrinho");
+                    Console.WriteLine("Opção inválida, tente novamente");
                     MenuGeral(lojas, produtos, clientes, passagens);
                     break;
-                    
                 }
             }
 

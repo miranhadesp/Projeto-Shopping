@@ -50,14 +50,9 @@ namespace projeto1{
 
             clientes.Add(new Cliente(1, NomeCliente, Cpf));
 
-            foreach (ICliente e in clientes)
-            {
-                Console.WriteLine(e.Id);
-            }
-
             Console.WriteLine("\nCadastro realizado com sucesso!"); 
 
-            inicio.MenuGeral(lojas, produtos, clientes, passagens);
+            compra.RealizarCompra(lojas, produtos, clientes, passagens);
         }
     }   
 }

@@ -36,6 +36,7 @@ namespace projeto1
         }
 
        Inicio inicio = new Inicio();
+       Produto produto = new Produto();
 
         public Loja(){
 
@@ -70,24 +71,22 @@ namespace projeto1
 
             Console.WriteLine("\nCadastro realizado com sucesso!");
 
-            inicio.MenuGeral(lojas, produtos, clientes, passagens);
+            produto.CadastrarProdutos(lojas, produtos, clientes, passagens);
         }
 
-        public void ExibirLojas(List<ILoja> lojas){
+        public void ExibirLojas(List<ILoja> lojas, List<IProduto> produtos){
 
-            Console.Write("\nLojas encontradas: ");
+            Console.Write("\nLojas encontradas: \n");
 
             foreach(ILoja e in lojas){
-                Console.WriteLine($"\nCódigo da loja: {e.Id}");
-                Console.WriteLine($"Segmento: {e.Segmento}");
-                Console.WriteLine($"Nome: {e.NomeLoja}");
+                Console.WriteLine($"\nNome: {e.NomeLoja}");
+
+                foreach(IProduto k in produtos){
+                    if(e.Id == k.CodLojaCadastrada){
+                         Console.WriteLine($"Produtos dentro de {e.NomeLoja}: {k.Nome} {k.Preco}R$");
+                    }
+                }
             }
         }
     }
 }
-
-
-
-
-
-

@@ -61,6 +61,9 @@ namespace projeto1
                 Preco = Convert.ToDouble(Console.ReadLine());
 
                 produtos.Add(new Produto(Nome, CodLojaCadastrada, Preco)); //-> uso de uma nova lista produto
+
+                inicio.MenuGeral(lojas, produtos, clientes, passagens);
+
             }
             else{
                 Console.Write("\nLoja não encontrada, tente novamente.");

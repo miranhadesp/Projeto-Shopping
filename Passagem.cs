@@ -54,7 +54,7 @@ namespace projeto1
         public void CadastrarPassagem(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         { //Metodo para cadastrar as passagens.
 
-            Console.Write("\nDigite o código da passagem: ");
+            Console.Write("\nDigite o código da passagem (diferente de 0): ");
             IdPassagem = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Digite o nome da empresa da passagem: "); //Alteração feita por Thais
@@ -72,7 +72,6 @@ namespace projeto1
             Console.WriteLine("\nCadastro realizado com sucesso!");
 
             inicio.MenuGeral(lojas, produtos, clientes, passagens);
-            
         }
 
         public void ExibirPassagem(List<IPassagem> passagens)
@@ -84,7 +83,7 @@ namespace projeto1
 
             foreach (IPassagem e in passagens)
             {
-                Console.Write($"\n{i}) Id : {e.IdPassagem}, Nome : {e.EmpresaPassagem}, Preço : {e.PrecoPassagem}R$, Destino: {e.DestinoPassagem}");
+                Console.Write($"\n{i}) Id : {e.IdPassagem}\nNome da empresa: {e.EmpresaPassagem}\nPreço : {e.PrecoPassagem}R$, Destino: {e.DestinoPassagem}");
                 i++;
             }
         }
@@ -96,18 +95,18 @@ namespace projeto1
             bool encontrar = false;
             string destino = " ";
 
-            foreach (ICliente e in clientes)
-            {
-            Console.WriteLine($"\nOlá, {e.NomeCliente}. Bem vindo :)");
-            }
+            ExibirPassagem(passagens);
 
-            Console.Write("\nDigite o Id da passagem desejada : ");
+            Console.Write("\nDigite o Id da passagem desejada (0 para voltar): ");
             int idPassagemVenda = Int32.Parse(Console.ReadLine());
+
+            if(idPassagemVenda == 0){
+                inicio.MenuGeral(lojas, produtos, clientes, passagens);
+            }
 
             foreach (IPassagem e in passagens)
             {
                 if (idPassagemVenda == e.IdPassagem){
-
                     destino = e.DestinoPassagem;
                     encontrar = true;
                     break;
@@ -127,7 +126,6 @@ namespace projeto1
                 Console.WriteLine("Id não encontrado, tente novamente.");
                 VenderPassagem(lojas, produtos, clientes, passagens);
             }
-
         }
     }
 }
