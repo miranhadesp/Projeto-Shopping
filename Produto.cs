@@ -44,7 +44,10 @@ namespace projeto1
 
             Console.Write("\nDigite o código da loja que você quer cadastrar um produto: ");
             CodLojaCadastrada = Convert.ToInt32(Console.ReadLine()); //-> gancho para ligar em lojas
-
+             if(lojas.Count == 0){
+                Console.WriteLine("Cadastre uma loja primeiro!");
+                inicio.MenuGeral(lojas, produtos, clientes, passagens);
+            }
             foreach(ILoja e in lojas){
                 if(CodLojaCadastrada == e.Id){
                     encontrou = true;
