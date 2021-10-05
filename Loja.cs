@@ -59,7 +59,7 @@ namespace projeto1
         public void CadastrarLoja(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         {
             // Método para realiza cadastro de lojas.
-            Console.Write("\nDigite o código da sua loja: ");
+            Console.Write("\nDigite o código da loja que quer cadastrar: ");
             Id = Convert.ToInt32(Console.ReadLine());
 
             // Busca se já existe alguma loja com o Id digitado.
@@ -72,18 +72,29 @@ namespace projeto1
                     CadastrarLoja(lojas, produtos, clientes, passagens);
                 }
             }
+                
+            bool controle = false;
+            do{
+                Console.Write("Digite o segmento que quer cadastrar (FastFood, SelfService, Loja): ");
+                Segmento = Console.ReadLine().ToUpper();
 
-            Console.Write("Digite o segmento que quer cadastrar (FastFood, SelfService, Loja): ");
-            Segmento = Console.ReadLine();
+                if(segmento == "FASTFOOD" || segmento == "SELFSERVICE" || segmento == "LOJA"){
 
-            Console.Write("Digite o nome da loja: ");
-            NomeLoja = Console.ReadLine();
+                    Console.Write("Digite o nome da loja: ");
+                    NomeLoja = Console.ReadLine();
 
-            lojas.Add(new Loja(Id, NomeLoja, Segmento)); // Adiciona loja na lista de lojas.
+                    lojas.Add(new Loja(Id, NomeLoja, Segmento)); // Adiciona loja na lista de lojas.
 
-            Console.WriteLine("\nCadastro realizado com sucesso!");
+                    Console.WriteLine("\nCadastro realizado com sucesso!");
 
-            produto.CadastrarProdutos(lojas, produtos, clientes, passagens); // Chama o método cadastrar produto.
+                    produto.CadastrarProdutos(lojas, produtos, clientes, passagens); // Chama o método cadastrar produto.
+                    controle = true;
+                }
+                else
+                {
+                Console.WriteLine("Segmento inexistente, digite um dos segmentos existentes");
+                }
+            }while (!controle);
         }
 
         public void ExibirLojas(List<ILoja> lojas, List<IProduto> produtos)

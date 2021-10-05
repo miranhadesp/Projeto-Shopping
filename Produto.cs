@@ -28,15 +28,15 @@ namespace projeto1
         }
 
         Inicio inicio = new Inicio(); // instância de Inicio.
+        // Loja loja; // instância de Loja.
 
         public Produto()
         { // Construtor que não recebe parâmetros. 
-
+            
         }
 
         public Produto(string nome, int codloja, double preco)
         { // Construtor que recebe três parâmetros. 
-
             Nome = nome;
             CodLojaCadastrada = codloja;
             Preco = preco;
@@ -45,63 +45,67 @@ namespace projeto1
         public void CadastrarProdutos(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         { // Método para realiza cadastro de produtos.
 
-            bool encontrou = false;
-            int valorIgual = 0;
-
-            Console.Write("\nDigite o código da loja que você quer cadastrar um produto: ");
-            CodLojaCadastrada = Convert.ToInt32(Console.ReadLine()); 
-
             if (lojas.Count == 0)
             {
+                Loja loja = new Loja();
                 Console.WriteLine("Cadastre uma loja primeiro!");
-                inicio.MenuGeral(lojas, produtos, clientes, passagens);
-            }
-            
-            foreach (ILoja e in lojas) //Percorre por todas as lojas cadastradas.
-            {
-                if (CodLojaCadastrada == e.Id)
-                {
-                    encontrou = true;
-                    valorIgual = e.Id;
-                    break;
-                }
-            }
-
-            if (encontrou)
-            {
-                Console.Write("\nQual produto deseja cadastrar? ");
-                Nome = Console.ReadLine();
-
-                Console.Write("Digite o valor desse produto: ");
-                Preco = Convert.ToDouble(Console.ReadLine());
-
-                produtos.Add(new Produto(Nome, CodLojaCadastrada, Preco)); // Adiciona produto na lista de produtos.
-
-                inicio.MenuGeral(lojas, produtos, clientes, passagens);
+                loja.CadastrarLoja(lojas, produtos, clientes, passagens);
+                // inicio.MenuGeral(lojas, produtos, clientes, passagens);
             }
             else
             {
-                Console.Write("\nLoja não encontrada, tente novamente.");
-                CadastrarProdutos(lojas, produtos, clientes, passagens);
-            }
+                bool encontrou = false;
+                int valorIgual = 0;
 
-            Console.Write("Deseja cadastrar outro produto? (S/N)");
+                Console.Write("\nDigite o código da loja que você quer cadastrar um produto: ");
+                CodLojaCadastrada = Convert.ToInt32(Console.ReadLine()); 
+                
+                foreach (ILoja e in lojas) //Percorre por todas as lojas cadastradas.
+                {
+                    if (CodLojaCadastrada == e.Id)
+                    {
+                        encontrou = true;
+                        valorIgual = e.Id;
+                        break;
+                    }
+                }
 
-            switch (Console.ReadLine().ToUpper())
-            { //verificação s eo cliente deseja cadastrar outro produto
+                if (encontrou)
+                {
+                    Console.Write("\nQual produto deseja cadastrar? ");
+                    Nome = Console.ReadLine();
 
-                case "S":
+                    Console.Write("Digite o valor desse produto: ");
+                    Preco = Convert.ToDouble(Console.ReadLine());
+
+                    produtos.Add(new Produto(Nome, CodLojaCadastrada, Preco)); // Adiciona produto na lista de produtos.
+
+                    inicio.MenuGeral(lojas, produtos, clientes, passagens);
+                }
+                else
+                {
+                    Console.Write("\nLoja não encontrada, tente novamente.");
                     CadastrarProdutos(lojas, produtos, clientes, passagens);
-                    break;
+                }
 
-                case "N":
-                    inicio.MenuGeral(lojas, produtos, clientes, passagens);
-                    break;
+                Console.Write("Deseja cadastrar outro produto? (S/N)");
 
-                default:
-                    Console.WriteLine("\nOpção inválida, voltando ao menu...");
-                    inicio.MenuGeral(lojas, produtos, clientes, passagens);
-                    break;
+                switch (Console.ReadLine().ToUpper())
+                { //verificação s eo cliente deseja cadastrar outro produto
+
+                    case "S":
+                        CadastrarProdutos(lojas, produtos, clientes, passagens);
+                        break;
+
+                    case "N":
+                        inicio.MenuGeral(lojas, produtos, clientes, passagens);
+                        break;
+
+                    default:
+                        Console.WriteLine("\nOpção inválida, voltando ao menu...");
+                        inicio.MenuGeral(lojas, produtos, clientes, passagens);
+                        break;
+                }
             }
         }
     }

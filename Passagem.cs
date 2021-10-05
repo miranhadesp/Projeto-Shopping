@@ -87,7 +87,6 @@ namespace projeto1
             }
         }
 
-
         public void VenderPassagem(List<ILoja> lojas, List<IProduto> produtos, List<ICliente> clientes, List<IPassagem> passagens)
         {
             //Metodo de venda de passagem, que eventualmente faz uma verificação do id digitado, com o id da passagem.
