@@ -74,6 +74,7 @@ namespace projeto1
             }
                 
             bool controle = false;
+
             do{
                 Console.Write("Digite o segmento que quer cadastrar (FastFood, SelfService, Loja): ");
                 Segmento = Console.ReadLine().ToUpper();
@@ -92,7 +93,7 @@ namespace projeto1
                 }
                 else
                 {
-                Console.WriteLine("Segmento inexistente, digite um dos segmentos existentes");
+                    Console.WriteLine("Segmento inexistente, digite um dos segmentos existentes");
                 }
             }while (!controle);
         }

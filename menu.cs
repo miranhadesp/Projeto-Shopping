@@ -56,7 +56,7 @@ namespace projeto1
                     if (indexCliente == -1)
                     {
                         Console.WriteLine("\nPercebemos que você não possui cadastro no nosso sistema.");
-                        Console.WriteLine("Siga os passas a seguir para continuar :)");
+                        Console.WriteLine("Siga os passos a seguir para continuar :)");
 
                         cliente.CadastrarCliente(lojas, produtos, clientes, passagens); //-> Cadastros de clientes passando todas as listas do programa como parâmetro para poder voltar ao menu após definição
                     }
@@ -73,7 +73,7 @@ namespace projeto1
                     break;
 
                 default:
-                    Console.WriteLine("Opção inválida, tente novamente");
+                    Console.WriteLine("\nOpção inválida, tente novamente");
                     MenuGeral(lojas, produtos, clientes, passagens);// Volta ao menu geral.
                     break;
             }
